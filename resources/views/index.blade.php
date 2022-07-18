@@ -20,7 +20,7 @@
         @error('title')
         <p>{{$message}}</p>
         @enderror
-        <input type="text" name="title" size="50" class="text">
+        <input type="text" name="title" size="120" class="text">
         <button type="submit" class="add_btn">追加</button>
       </form>
       <table class="table">
@@ -42,28 +42,22 @@
         </tbody>
       </table>
 
-
+      @foreach($todos as $todo)
       <div class="display_flex">
-        @foreach($todos as $todo)
-
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>
-
         <div class="todo-title">
           <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
         </div>
-
         <button type="submit" class="update_btn">更新</button>
-
         <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
           @method('DELETE')
           @csrf
           <button type="submit" class="delete_btn">削除</button>
         </form>
-
-        @endforeach
       </div>
+      @endforeach
     </div>
   </div>
 </body>

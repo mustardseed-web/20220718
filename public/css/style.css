@@ -11,6 +11,10 @@
     background-color: blue;
 }
 
+.title {
+    margin-left: 30px;
+}
+
 .container {
     margin-left: 20%;
     margin-top: 15%;
@@ -19,6 +23,7 @@
 
 .text {
     padding: 10px 10px;
+    margin-left: 20px;
 }
 
 .add_btn {
@@ -42,11 +47,11 @@
 }
 
 .column_updated_at {
-    padding-left: 10%;
+    padding-left: 0%;
 }
 
 .column_delete {
-    padding-left: 10%;
+    padding-left: 10px;
 }
 
 .todo-created_at {
@@ -62,9 +67,17 @@
 }
 
 .update_btn {
-    margin-left: 19%;
+    margin-left: 7%;
+    color: orange;
+    background-color: #fff;
+    border: 1px solid orange;
+    padding: 10px 10px;
 }
 
 .delete_btn {
-    margin-left: 215px;
+    margin-left: 200px;
+    color: skyblue;
+    background-color: #fff;
+    border: 1px solid skyblue;
+    padding: 10px 10px;
 }

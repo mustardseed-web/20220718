@@ -60,3 +60,11 @@
 .display_flex {
     display: flex;
 }
+
+.update_btn {
+    margin-left: 19%;
+}
+
+.delete_btn {
+    margin-left: 215px;
+}

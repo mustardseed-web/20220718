@@ -41,21 +41,27 @@
           </tr>
         </tbody>
       </table>
+
+
       <div class="display_flex">
         @foreach($todos as $todo)
+
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>
+
         <div class="todo-title">
-          <input type="text" name="title" size="50" class="#">
-          {{$todo->title}}
+          <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
         </div>
-        <button type="submit">更新</button>
+
+        <button type="submit" class="update_btn">更新</button>
+
         <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
           @method('DELETE')
           @csrf
-          <button type="submit">削除</button>
+          <button type="submit" class="delete_btn">削除</button>
         </form>
+
         @endforeach
       </div>
     </div>

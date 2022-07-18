@@ -47,15 +47,22 @@
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>
+
         <div class="todo-title">
           <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
         </div>
-        <button type="submit" class="update_btn">更新</button>
+        {{-- put --}}
+        <form action="{{ route('put', ['todoId' => $todo->id]) }}" method="post">
+          @csrf
+          <button type="submit" class="update_btn">更新</button>
+        </form>
+        {{-- delete --}}
         <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
           @method('DELETE')
           @csrf
           <button type="submit" class="delete_btn">削除</button>
         </form>
+
       </div>
       @endforeach
     </div>

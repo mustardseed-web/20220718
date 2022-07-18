@@ -32,4 +32,11 @@ class UpdateRequest extends FormRequest
     {
       return $this->input('title');
     }
+    
+    public function id(): int
+    {
+      return $this->route('todoId');
+    }
 }
+
+

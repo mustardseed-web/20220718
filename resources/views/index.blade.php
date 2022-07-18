@@ -49,7 +49,7 @@
         </div>
         {{-- put --}}
         <form action="{{ route('put', ['todoId' => $todo->id]) }}" method="post">
-          @method('PUT')
+          {{-- @method('PUT') --}}
           @csrf
           <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
           <button type="submit" class="update_btn">更新</button>

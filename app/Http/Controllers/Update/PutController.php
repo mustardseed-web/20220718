@@ -16,10 +16,20 @@ class PutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function __invoke(UpdateRequest $request)
+    // {
+    //     $todo = Todo::where('id', $request->id())->firstOrFail();
+    //     // dd($todo);
+    //     $todo -> title = $todo -> title();
+    //     $todo -> save();
+    //     return redirect()
+    //     -> route('index', ['todoId' => $todo->id]);
+    // }
     public function __invoke(UpdateRequest $request)
-    {
-        // dd($request->all());
-        $todo = Todo::where('id', $request->id())->firstOrFail();
+    {   
+        $todoId = (int) $request->route('todoId');
+        $todo = Todo::where('id', $todoId)->firstOrFail();
+        dd($todo);
         $todo -> title = $todo -> title();
         $todo -> save();
         return redirect()

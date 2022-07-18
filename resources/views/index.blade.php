@@ -43,7 +43,7 @@
       </table>
 
       @foreach($todos as $todo)
-      <div class="display_flex">
+      <div class="display_flex todo_list_container">
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>

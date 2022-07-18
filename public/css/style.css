@@ -16,7 +16,7 @@
 }
 
 .container {
-    margin-left: 20%;
+    margin-left: 5%;
     margin-top: 15%;
     background-color: #fff;
 }
@@ -43,7 +43,7 @@
 }
 
 .column_title {
-    padding-left: 10%;
+    /* padding-left: 10%; */
 }
 
 .column_updated_at {
@@ -67,17 +67,40 @@
 }
 
 .update_btn {
-    margin-left: 7%;
+    margin-left: 70px;
     color: orange;
     background-color: #fff;
     border: 1px solid orange;
-    padding: 10px 10px;
+    /* padding: 0px 5px; */
 }
 
 .delete_btn {
-    margin-left: 200px;
+    margin-left: 70px;
     color: skyblue;
     background-color: #fff;
     border: 1px solid skyblue;
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
+}
+
+td:nth-child(1) {
+    width: 300px;
+}
+
+td:nth-child(2) {
+    width: 530px;
+    padding-left: 250px;
+}
+
+td:nth-child(3) {
+    width: 90px;
+}
+
+.table {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.todo_list_container {
+    margin-bottom: 10px;
 }

@@ -53,6 +53,7 @@
         </div>
         {{-- put --}}
         <form action="{{ route('put', ['todoId' => $todo->id]) }}" method="post">
+          @method('PUT')
           @csrf
           <button type="submit" class="update_btn">更新</button>
         </form>

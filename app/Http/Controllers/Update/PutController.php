@@ -18,6 +18,7 @@ class PutController extends Controller
      */
     public function __invoke(UpdateRequest $request)
     {
+        // dd($request->all());
         $todo = Todo::where('id', $request->id())->firstOrFail();
         $todo -> title = $todo -> title();
         $todo -> save();

@@ -20,10 +20,17 @@
         @error('title')
         <p>{{$message}}</p>
         @enderror
-        <input type="text" name="title" size="120" class="text">
+        <input type="text" name="title" size="90" class="text">
         <button type="submit" class="add_btn">追加</button>
       </form>
-      <table class="table">
+      <div class="display_flex column_margin">
+        <p class="column_created_at">作成日</p>
+        <p class="column_title">タスク名</p>
+        <p class="column_updated_at">更新</p>
+        <p class="column_delete">削除</p>
+      </div>
+
+      {{-- <table class="table">
         <tbody>
           <tr>
             <div>
@@ -40,7 +47,7 @@
             </div>
           </tr>
         </tbody>
-      </table>
+      </table> --}}
 
       @foreach($todos as $todo)
       <div class="display_flex todo_list_container">

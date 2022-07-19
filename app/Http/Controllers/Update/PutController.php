@@ -27,10 +27,10 @@ class PutController extends Controller
     // }
     public function __invoke(UpdateRequest $request)
     {   
-        dd($request);
+      // dd($request);
         $todoId = (int) $request->route('todoId');
         $todo = Todo::where('id', $todoId)->firstOrFail();
-        $todo -> title = $todo -> title();
+        $todo -> title = $request -> title();
         $todo -> save();
         return redirect()
         -> route('index', ['todoId' => $todo->id]);

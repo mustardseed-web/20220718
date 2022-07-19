@@ -60,7 +60,7 @@
           @csrf
           <button type="submit" class="delete_btn">削除</button>
         </form>
-
+        {{-- テスト --}}
       </div>
       @endforeach
     </div>

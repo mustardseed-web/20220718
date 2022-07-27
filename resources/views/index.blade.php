@@ -14,23 +14,22 @@
     <h1 class="title">
       Todo List
     </h1>
-    {{-- delete --}}
-    <form action="{{ route('search', ['todoId' => $todo->id]) }}" method="post">
+    {{-- search --}}
+    {{-- <form action="{{ route('search', ['todoId' => $todo->id]) }}" method="post">
       @csrf
       <button type="submit" class="search_btn">タスク検索</button>
-    </form>
+    </form> --}}
     <div>
-      <form method="post">
-        <div>
-          <select name="task_class">
-            <option value="家事">家事</option>
-            <option value="勉強">勉強</option>
-            <option value="運動">運動</option>
-            <option value="食事">食事</option>
-            <option value="移動">移動</option>
-          </select>
-        </div>
-      </form>
+      <!--  カテゴリープルダウン -->
+      <div class="form-group">
+        <label for="category-id">{{ __('カテゴリー') }}<span class="badge badge-danger ml-2">{{ __('必須') }}</span></label>
+        <select class="form-control" id="category-id" name="category_id">
+          @foreach ($categories as $category)
+          <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+          @endforeach
+        </select>
+      </div>
+
       <form action="{{ route('create') }}" method="post">
         @csrf
         @error('title')
@@ -52,6 +51,21 @@
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>
+
+
+        <!--  カテゴリープルダウン -->
+        <div class="form-group">
+          {{-- <label for="category-id">{{ __('カテゴリー') }}<span class="badge badge-danger ml-2">{{ __('必須')
+              }}</span></label> --}}
+          <select class="form-control" id="category-id" name="category_id">
+            <option value="家事">家事</option>
+            <option value="勉強">勉強</option>
+            <option value="運動">運動</option>
+            <option value="食事">食事</option>
+            <option value="移動">移動</option>
+          </select>
+        </div>
+
         {{-- put --}}
         <form action="{{ route('put', ['todoId' => $todo->id]) }}" method="post">
           @csrf

@@ -9,15 +9,14 @@
 </head>
 
 <body>
-  <!-- 検索フォーム -->
-  <form method="get" action="" class="form-inline">
-    <div class="form-group">
-      <input type="text" name="keyword" class="form-control" value="{{$keyword}}" placeholder="名前やメールアドレス">
-    </div>
-    <div class="form-group">
-      <input type="submit" value="検索" class="btn btn-info" style="margin-left: 15px; color:white;">
-    </div>
-  </form>
+  {{-- //* 検索機能ここから *// --}}
+  <div>
+    <form action="{{ route('search') }}" method="GET">
+      <input type="text" name="keyword" value="{{ $keyword }}">
+      <input type="submit" value="検索">
+    </form>
+  </div>
+  {{-- //*検索機能ここまで*// --}}
 </body>
 
 </html>

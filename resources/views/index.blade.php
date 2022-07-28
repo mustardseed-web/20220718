@@ -14,11 +14,7 @@
     <h1 class="title">
       Todo List
     </h1>
-    {{-- search --}}
-    {{-- <form action="{{ route('search', ['todoId' => $todo->id]) }}" method="post">
-      @csrf
-      <button type="submit" class="search_btn">タスク検索</button>
-    </form> --}}
+    <button type="button" onclick="location.href='{{ route('search') }}' ">タスク検索</button>
     <div>
       <!--  カテゴリープルダウン -->
       <div class="form-group">
@@ -38,6 +34,7 @@
         <input type="text" name="title" size="90" class="text">
         <button type="submit" class="add_btn">追加</button>
       </form>
+      {{-- 項目名 --}}
       <div class="display_flex column_margin">
         <p class="column_created_at">作成日</p>
         <p class="column_title">タスク名</p>
@@ -55,14 +52,11 @@
 
         <!--  カテゴリープルダウン -->
         <div class="form-group">
-          {{-- <label for="category-id">{{ __('カテゴリー') }}<span class="badge badge-danger ml-2">{{ __('必須')
-              }}</span></label> --}}
+          <label for="category-id">{{ __('カテゴリー') }}<span class="#">{{ __('必須') }}</span></label>
           <select class="form-control" id="category-id" name="category_id">
-            <option value="家事">家事</option>
-            <option value="勉強">勉強</option>
-            <option value="運動">運動</option>
-            <option value="食事">食事</option>
-            <option value="移動">移動</option>
+            @foreach ($categories as $category)
+            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+            @endforeach
           </select>
         </div>
 

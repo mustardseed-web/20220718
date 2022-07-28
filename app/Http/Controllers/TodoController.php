@@ -64,5 +64,8 @@ class TodoController extends Controller
 
     return view('index', compact('posts', 'keyword'));
 }
-
+    public function search_index(Request $request)
+    {
+        return view('search');
+    }
 }

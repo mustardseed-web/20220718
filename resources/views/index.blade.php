@@ -14,7 +14,7 @@
     <h1 class="title">
       Todo List
     </h1>
-    <button type="button" onclick="location.href='{{ route('search') }}' ">タスク検索</button>
+    <button type="button" onclick="location.href='{{ route('search_index') }}' ">タスク検索</button>
     <div>
       <!--  カテゴリープルダウン -->
       <div class="form-group">

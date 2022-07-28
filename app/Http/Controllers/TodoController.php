@@ -26,6 +26,7 @@ class TodoController extends Controller
   {
       $todo = new Todo;
       $todo->title = $request->title();
+      $todo->user_id = $request->user_id();
       $todo->save();
       return redirect()->route('index');
   }
@@ -50,19 +51,28 @@ class TodoController extends Controller
   }
 
   public function search(Request $request)
-  {
+  { 
+    $categories = $this->category->get();
     $keyword = $request->input('keyword');
+    $category_id = $request->input('category_id');
 
+    return view('search', [
+      'keyword' => $keyword,
+      'category_id' => $category_id
+  ]);
+
+    $keyword = $request->input('keyword');
+    $category_id = $request->input('category_id');
     $query = Todo::query();
-
-    if(!empty($keyword)) {
+    if(isset($keyword)) {
         $query->where('title', 'LIKE', "%{$keyword}%");
-            // ->orWhere('author', 'LIKE', "%{$keyword}%");
     }
-
+    //カテゴリが選択された場合、categoriesテーブルからcategory_idが一致する商品を$queryに代入
+    if (isset($category_id)) {
+      $query->where('category_id', $category_id);
+    }
     $posts = $query->get();
-
-    return view('search', compact('posts', 'keyword'));
+    return view('search', compact('posts', 'keyword', 'category_id', 'categories'));
 }
 
     // 画面遷移    

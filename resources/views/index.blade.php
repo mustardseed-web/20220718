@@ -24,7 +24,7 @@
           @endforeach
         </select>
       </div>
-      {{-- 追加 --}}
+      {{-- 追加ボタン --}}
       <form action="{{ route('create') }}" method="post">
         @csrf
         @error('title')
@@ -33,50 +33,50 @@
         <input type="text" name="title" size="90" class="text">
         <button type="submit" class="add_btn">追加</button>
       </form>
-      {{-- 項目名 --}}
-      <div class="display_flex column_margin">
-        <p class="column_created_at">作成日</p>
-        <p class="column_title">タスク名</p>
-        <p class="column_tag">タグ</p>
-        <p class="column_updated_at">更新</p>
-        <p class="column_delete">削除</p>
-      </div>
 
-      @foreach($todos as $todo)
-      <div class="display_flex todo_list_container">
-        <div class="todo-created_at">
-          {{$todo->created_at}}
-        </div>
-        <div class="todo-created_at">
-          {{$todo->title}}
-        </div>
+      <table>
+        <tr>
+          <th class="column_created_at">作成日</th>
+          <th class="column_created_at">タスク名</th>
+          <th class="column_title">タグ</th>
+          <th class="column_updated_at">更新</th>
+          <th class="column_delete">削除</th>
+        </tr>
 
-        <!--  カテゴリープルダウン -->
-        <div class="form-group">
-          <label for="category-id">{{ __('カテゴリー') }}<span class="#">{{ __('必須') }}</span></label>
-          <select class="form-control" id="category-id" name="category_id">
-            @foreach ($categories as $category)
-            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
-            @endforeach
-          </select>
-        </div>
+        @foreach($todos as $todo)
+        <tr>
+          <th class="column_created_at">{{$todo->created_at}}</th>
+          <th class="column_title">{{$todo->title}}</th>
+          <th class="column_category">{{$todo->category}}</th>
 
-        {{-- put --}}
-        <form action="{{ route('create', ['todoId' => $todo->id]) }}" method="post">
-          @csrf
-          <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
-          <button type="submit" class="update_btn">更新</button>
-        </form>
+          <!--  カテゴリープルダウン -->
+          <div class="form-group">
+            <select class="form-control" id="category-id" name="category_id">
+              @foreach ($categories as $category)
+              <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+              @endforeach
+            </select>
+          </div>
 
-        {{-- delete --}}
-        <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
-          @method('DELETE')
-          @csrf
-          <button type="submit" class="delete_btn">削除</button>
-        </form>
-      </div>
-      @endforeach
-      {{-- 修正 --}}
+          <th class="column_updated_at">
+            <form action="{{ route('create', ['todoId' => $todo->id]) }}" method="post">
+              @csrf
+              <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
+              <button type="submit" class="update_btn">更新</button>
+            </form>
+          </th>
+
+          <th class="column_delete">
+            <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
+              @method('DELETE')
+              @csrf
+              <button type="submit" class="delete_btn">削除</button>
+            </form>
+          </th>
+        </tr>
+
+        @endforeach
+      </table>
     </div>
   </div>
 </body>

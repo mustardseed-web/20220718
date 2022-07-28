@@ -18,14 +18,13 @@
     <div>
       <!--  カテゴリープルダウン -->
       <div class="form-group">
-        <label for="category-id">{{ __('カテゴリー') }}<span class="badge badge-danger ml-2">{{ __('必須') }}</span></label>
         <select class="form-control" id="category-id" name="category_id">
           @foreach ($categories as $category)
           <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
           @endforeach
         </select>
       </div>
-
+      {{-- 追加 --}}
       <form action="{{ route('create') }}" method="post">
         @csrf
         @error('title')
@@ -48,7 +47,9 @@
         <div class="todo-created_at">
           {{$todo->created_at}}
         </div>
-
+        <div class="todo-created_at">
+          {{$todo->title}}
+        </div>
 
         <!--  カテゴリープルダウン -->
         <div class="form-group">
@@ -61,11 +62,12 @@
         </div>
 
         {{-- put --}}
-        <form action="{{ route('put', ['todoId' => $todo->id]) }}" method="post">
+        <form action="{{ route('create', ['todoId' => $todo->id]) }}" method="post">
           @csrf
           <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
           <button type="submit" class="update_btn">更新</button>
         </form>
+
         {{-- delete --}}
         <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
           @method('DELETE')

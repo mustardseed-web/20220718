@@ -62,10 +62,14 @@ class TodoController extends Controller
 
     $posts = $query->get();
 
-    return view('index', compact('posts', 'keyword'));
+    return view('search', compact('posts', 'keyword'));
 }
+
+    // 画面遷移    
     public function search_index(Request $request)
     {
-        return view('search');
+      $todos = Todo::all();
+      $categories = $this->category->get();
+      return view('search', compact('todos','categories'));
     }
 }

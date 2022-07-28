@@ -23,6 +23,6 @@ class CategoriesController extends Controller
     public function __invoke(Request $request)
     {
       $categories = $this->category->get();
-      return view('book.create', compact('categories'));
+      return view('index', compact('categories'));
     }
 }

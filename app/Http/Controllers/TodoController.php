@@ -25,10 +25,11 @@ class TodoController extends Controller
 
 
   public function create(CreateRequest $request)
-  {   $user_id = Auth::id();
+  {   
+      $user_id = Auth::id();
+      $user_id = $request->user()->id;
       $todo = new Todo;
       $todo->title = $request->title();
-      $todo->user_id = $request->user_id();
       $todo->save();
       return redirect()->route('index', compact('user_id'));
   }
@@ -48,8 +49,7 @@ class TodoController extends Controller
       $todoId = (int) $request->route('todoId');
       $todo = Todo::where('id', $todoId)->firstOrFail();
       $todo->delete();
-      return redirect()
-          ->route('index');
+      return redirect()->route('index');
   }
 
   public function search(Request $request)

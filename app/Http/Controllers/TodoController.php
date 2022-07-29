@@ -52,14 +52,14 @@ class TodoController extends Controller
 
   public function search(Request $request)
   { 
-    $categories = $this->category->get();
-    $keyword = $request->input('keyword');
-    $category_id = $request->input('category_id');
+  //   $categories = $this->category->get();
+  //   $keyword = $request->input('keyword');
+  //   $category_id = $request->input('category_id');
 
-    return view('search', [
-      'keyword' => $keyword,
-      'category_id' => $category_id
-  ]);
+  //   return view('search', [
+  //     'keyword' => $keyword,ｚ
+  //     'category_id' => $category_id
+  // ]);
 
     $keyword = $request->input('keyword');
     $category_id = $request->input('category_id');

@@ -26,12 +26,6 @@ class TodoController extends Controller
 
   public function create(CreateRequest $request)
   {   
-      // $user_id = Auth::id();
-      // $todo = new Todo;
-      // $todo->title = $request->title();
-      // $todo->save();
-      // return redirect()->route('index', compact('user_id'));
-      
       $user_id = Auth::id();
       $todo = new Todo;
       $todo->title = $request->title();
@@ -62,18 +56,18 @@ class TodoController extends Controller
   { 
     $todos = Todo::all();
     $categories = $this->category->get();
-    $keyword = $request->input('keyword');
+    $searchWord = $request->input('searchWord');
     $category_id = $request->input('category_id');
     $query = Category::query();
-    if(isset($keyword)) {
-        $query->where('title', 'LIKE', "%{$keyword}%");
+    if(isset($searchWord)) {
+        $query->where('title', 'LIKE', "%{$searchWord}%");
     }
     //カテゴリが選択された場合、categoriesテーブルからcategory_idが一致する商品を$queryに代入
     if (isset($category_id)) {
       $query->where('category_id', $category_id);
     }
     $posts = $query->get();
-    return view('search', compact('posts', 'keyword', 'category_id', 'categories', 'todos'));
+    return view('search', compact('posts', 'searchWord', 'category_id', 'categories', 'todos'));
 }
 
     // 検索画面へ遷移    

@@ -83,7 +83,6 @@
               <button type="submit" class="update_btn">更新</button>
             </form>
           </th>
-
           {{-- 削除ボタン --}}
           <th class="column_delete">
             <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">

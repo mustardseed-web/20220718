@@ -52,18 +52,11 @@ class TodoController extends Controller
 
   public function search(Request $request)
   { 
-  //   $categories = $this->category->get();
-  //   $keyword = $request->input('keyword');
-  //   $category_id = $request->input('category_id');
-
-  //   return view('search', [
-  //     'keyword' => $keyword,ｚ
-  //     'category_id' => $category_id
-  // ]);
-
+    $todos = Todo::all();
+    $categories = $this->category->get();
     $keyword = $request->input('keyword');
     $category_id = $request->input('category_id');
-    $query = Todo::query();
+    $query = Category::query();
     if(isset($keyword)) {
         $query->where('title', 'LIKE', "%{$keyword}%");
     }
@@ -72,7 +65,7 @@ class TodoController extends Controller
       $query->where('category_id', $category_id);
     }
     $posts = $query->get();
-    return view('search', compact('posts', 'keyword', 'category_id', 'categories'));
+    return view('search', compact('posts', 'keyword', 'category_id', 'categories', 'todos'));
 }
 
     // 画面遷移    

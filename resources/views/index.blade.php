@@ -54,10 +54,13 @@
           <th class="column_delete">削除</th>
         </tr>
 
+
+        {{-- public function index()
+        { $todos = Todo::all(); --}}
         @foreach($todos as $todo)
         <tr>
           <th class="column_created_at">{{$todo->created_at}}</th>
-          <th class="column_title">{{$todo->title}}</th>
+          {{-- <th class="column_title">{{$todo->title}}</th> --}}
           <th class="column_category">{{$todo->category}}</th>
 
           <!--  カテゴリープルダウン -->
@@ -69,14 +72,19 @@
             </select>
           </div>
 
+          {{-- 更新ボタン --}}
           <th class="column_updated_at">
-            <form action="{{ route('create', ['todoId' => $todo->id]) }}" method="post">
+            {{-- @foreach($todos as $todo) --}}
+            {{-- '/update/{todoId}' --}}
+            <form action="{{ route('update', ['todoId' => $todo->id]) }}" method="post">
+              @method('PUT')
               @csrf
               <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
               <button type="submit" class="update_btn">更新</button>
             </form>
           </th>
 
+          {{-- 削除ボタン --}}
           <th class="column_delete">
             <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
               @method('DELETE')

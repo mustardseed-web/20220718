@@ -26,10 +26,16 @@ class TodoController extends Controller
 
   public function create(CreateRequest $request)
   {   
+      // $user_id = Auth::id();
+      // $todo = new Todo;
+      // $todo->title = $request->title();
+      // $todo->save();
+      // return redirect()->route('index', compact('user_id'));
+      
       $user_id = Auth::id();
-      $user_id = $request->user()->id;
       $todo = new Todo;
       $todo->title = $request->title();
+      $todo->user_id = $user_id;
       $todo->save();
       return redirect()->route('index', compact('user_id'));
   }

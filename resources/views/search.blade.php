@@ -73,6 +73,8 @@
       @endforeach
     </table>
 
+    <a href="{{ route('index'}}">戻る</a>
+
   </div>
 </body>
 

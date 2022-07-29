@@ -7,6 +7,7 @@ use App\Models\Todo;
 use App\Models\Category;
 use App\Http\Requests\CreateRequest;
 use App\Http\Requests\UpdateRequest;
+use Illuminate\Support\Facades\Auth;//追記
 
 class TodoController extends Controller
 {
@@ -21,6 +22,7 @@ class TodoController extends Controller
       $categories = $this->category->get();
       return view('index', compact('todos','categories'));
   }
+
 
   public function create(CreateRequest $request)
   {

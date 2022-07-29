@@ -34,6 +34,7 @@
           @endforeach
         </select>
       </div>
+
       {{-- 追加ボタン --}}
       <form action="{{ route('create') }}" method="post">
         @csrf

@@ -25,12 +25,12 @@ class TodoController extends Controller
 
 
   public function create(CreateRequest $request)
-  {
+  {   $user_id = Auth::id();
       $todo = new Todo;
       $todo->title = $request->title();
       $todo->user_id = $request->user_id();
       $todo->save();
-      return redirect()->route('index');
+      return redirect()->route('index', compact('user_id'));
   }
 
   public function update(UpdateRequest $request)
@@ -70,7 +70,7 @@ class TodoController extends Controller
     return view('search', compact('posts', 'keyword', 'category_id', 'categories', 'todos'));
 }
 
-    // 画面遷移    
+    // 検索画面へ遷移    
     public function search_index(Request $request)
     {
       $todos = Todo::all();

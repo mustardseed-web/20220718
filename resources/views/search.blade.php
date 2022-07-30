@@ -29,7 +29,6 @@
     </div>
   </form>
 
-
   <table>
     <tr>
       <th class="column_created_at">作成日</th>
@@ -68,14 +67,10 @@
       </tr>
       @endforeach
     </table>
+    @else
+    <p>見つかりませんでした。</p>
+    @endif
   </div>
-
-
-
-
-
-
-
 
   <a href="{{ url('/') }}">戻る</a>
 

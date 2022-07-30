@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    public function todos() {
+      return $this->belongsTo(Todo::class);
+  }
 }

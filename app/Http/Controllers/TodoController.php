@@ -59,11 +59,11 @@ class TodoController extends Controller
     $searchWord = $request->input('searchWord');
     $category_id = $request->input('category_id');
     $query = Category::query();
-    if(isset($searchWord)) {
-        $query->where('title', 'LIKE', "%{$searchWord}%");
+    if(!empty($searchWord)) {
+      $query->where('title', 'LIKE', "%{$searchWord}%");
     }
     //カテゴリが選択された場合、categoriesテーブルからcategory_idが一致する商品を$queryに代入
-    if (isset($category_id)) {
+    if (!empty($category_id)) {
       $query->where('category_id', $category_id);
     }
     $posts = $query->get();

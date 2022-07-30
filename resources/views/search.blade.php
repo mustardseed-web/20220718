@@ -44,10 +44,11 @@
   <div class="#">
     <table class="#">
       @foreach($posts as $post)
+      @foreach($todos as $todo)
       <tr>
-        <td>{{ $posts->created_at }}</td>
-        <td>{{ $posts->title }}</td>
-        <td>{{ $posts->category_name }}</td>
+        <td>{{ $post->created_at }}</td>
+        <td>{{ $post->title }}</td>
+        <td>{{ $post->category_name }}</td>
         <td>
           {{-- 更新ボタン --}}
           <form action="{{ route('update', ['todoId' => $todo->id]) }}" method="post">
@@ -65,6 +66,7 @@
           </form>
         </td>
       </tr>
+      @endforeach
       @endforeach
     </table>
     @else

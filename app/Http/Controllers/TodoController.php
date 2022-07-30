@@ -58,7 +58,7 @@ class TodoController extends Controller
     $categories = $this->category->get();
     $searchWord = $request->input('searchWord');
     $category_id = $request->input('category_id');
-    $query = Category::query();
+    $query = Todo::query();
     if(!empty($searchWord)) {
       $query->where('title', 'LIKE', "%{$searchWord}%");
     }

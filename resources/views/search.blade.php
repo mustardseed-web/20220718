@@ -50,7 +50,7 @@
       <tr>
         <td>{{ $post->created_at }}</td>
         <td>
-          <form action="{{ route('search_update', ['postId' => $post->id]) }}" method="post">
+          <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
             @method('PUT')
             @csrf
             <!--  更新内容入力欄 -->
@@ -66,7 +66,7 @@
           </form>
         <td class="column_delete">
           {{-- 削除機能 --}}
-          <form action="{{ route('search_delete', ['postId' => $post->id]) }}" method="post">
+          <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
             @method('DELETE')
             @csrf
             <!--  削除ボタン -->

@@ -54,7 +54,7 @@ class TodoController extends Controller
       // return back();
   }
 
-  public function search_update(UpdateRequest $request)
+  public function searchUpdate(UpdateRequest $request)
   {   
       $postId = (int) $request->route('postId');
       $post = Todo::where('id', $postId)->firstOrFail();
@@ -65,7 +65,7 @@ class TodoController extends Controller
 
   }
 
-  public function search_delete(Request $request)
+  public function searchDelete(Request $request)
   {
       $postId = (int) $request->route('postId');
       $post = Todo::where('id', $postId)->firstOrFail();

@@ -66,7 +66,6 @@ class TodoController extends Controller
     if (!empty($category_id)) {
       $query->where('category_id', $category_id);
     }
-    // dd($query);
     $posts = $query->get();
     return view('search', compact('posts', 'searchWord', 'category_id', 'categories', 'todos'));
 }

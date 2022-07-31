@@ -49,11 +49,11 @@
       <tr>
         <td>{{ $post->created_at }}</td>
         <td>
-          <form action="{{ route('update', ['postId' => $put->id]) }}" method="post">
-            @method('PUT')
+          <form action="{{ route('update', ['postId' => $post->id]) }}" method="post">
+            {{-- @method('PUT') --}}
             @csrf
             <!--  タスク入力欄 -->
-            <input type="text" name="title" size="50" value="{{$put->title}}" class="#">
+            <input type="text" name="title" size="50" value="{{$post->title}}" class="#">
             <!--  カテゴリープルダウン -->
             <select class="form-control" id="category-id" name="category_id">
               @foreach ($categories as $category)
@@ -64,7 +64,7 @@
             <button type="submit" class="update_btn">更新</button>
           </form>
         <td class="column_delete">
-          <form action="{{ route('delete', ['putId' => $put->id]) }}" method="post">
+          <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
             @method('DELETE')
             @csrf
             <!--  削除ボタン -->

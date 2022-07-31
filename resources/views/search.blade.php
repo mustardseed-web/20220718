@@ -14,7 +14,6 @@
     タスク検索
   </h1>
   {{-- //* 検索機能ここから *// --}}
-
   <form action="{{ route('search') }}" method="POST">
     @csrf
     <!--入力欄-->
@@ -30,6 +29,8 @@
     {{-- 検索ボタン --}}
     <input type="submit" value="検索">
   </form>
+
+  {{-- 検索結果項目 --}}
   <table>
     <tr>
       <th class="column_created_at">作成日</th>
@@ -52,7 +53,7 @@
           <form action="{{ route('search_update', ['postId' => $post->id]) }}" method="post">
             @method('PUT')
             @csrf
-            <!--  タスク入力欄 -->
+            <!--  更新内容入力欄 -->
             <input type="text" name="title" size="50" value="{{$post->title}}" class="#">
             <!--  カテゴリープルダウン -->
             <select class="form-control" id="category-id" name="category_id">
@@ -64,6 +65,7 @@
             <button type="submit" class="update_btn">更新</button>
           </form>
         <td class="column_delete">
+          {{-- 削除機能 --}}
           <form action="{{ route('search_delete', ['postId' => $post->id]) }}" method="post">
             @method('DELETE')
             @csrf

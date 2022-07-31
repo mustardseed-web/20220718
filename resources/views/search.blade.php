@@ -16,6 +16,7 @@
   {{-- //* 検索機能ここから *// --}}
 
   <form action="{{ route('search') }}" method="POST">
+    @csrf
     <!--入力欄-->
     <input type="text" name="searchWord">
     <!--  カテゴリープルダウン -->
@@ -44,15 +45,15 @@
   <div class="#">
     <table class="#">
       @foreach($posts as $post)
-      @foreach($todos as $todo)
+      {{-- @foreach($todos as $todo) --}}
       <tr>
         <td>{{ $post->created_at }}</td>
         <td>
-          <form action="{{ route('update', ['todoId' => $todo->id]) }}" method="post">
+          <form action="{{ route('update', ['postId' => $put->id]) }}" method="post">
             @method('PUT')
             @csrf
             <!--  タスク入力欄 -->
-            <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
+            <input type="text" name="title" size="50" value="{{$put->title}}" class="#">
             <!--  カテゴリープルダウン -->
             <select class="form-control" id="category-id" name="category_id">
               @foreach ($categories as $category)
@@ -63,7 +64,7 @@
             <button type="submit" class="update_btn">更新</button>
           </form>
         <td class="column_delete">
-          <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
+          <form action="{{ route('delete', ['putId' => $put->id]) }}" method="post">
             @method('DELETE')
             @csrf
             <!--  削除ボタン -->
@@ -71,7 +72,7 @@
           </form>
         </td>
       </tr>
-      @endforeach
+      {{-- @endforeach --}}
       @endforeach
     </table>
     @else

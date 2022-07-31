@@ -49,8 +49,8 @@
       <tr>
         <td>{{ $post->created_at }}</td>
         <td>
-          <form action="{{ route('update', ['postId' => $post->id]) }}" method="post">
-            {{-- @method('PUT') --}}
+          <form action="{{ route('search_update', ['postId' => $post->id]) }}" method="post">
+            @method('PUT')
             @csrf
             <!--  タスク入力欄 -->
             <input type="text" name="title" size="50" value="{{$post->title}}" class="#">
@@ -64,7 +64,7 @@
             <button type="submit" class="update_btn">更新</button>
           </form>
         <td class="column_delete">
-          <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
+          <form action="{{ route('search_delete', ['postId' => $post->id]) }}" method="post">
             @method('DELETE')
             @csrf
             <!--  削除ボタン -->

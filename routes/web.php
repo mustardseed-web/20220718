@@ -20,7 +20,7 @@ Route::get('/', [TodoController::class, 'index'])->name('index');
 Route::post('/create', [TodoController::class, 'create'])->name('create');
 Route::delete('/delete/{todoId}', [TodoController::class, 'delete'])->name('delete');
 Route::put('/update/{todoId}', [TodoController::class, 'update'])->name('update');
-Route::get('/search', [TodoController::class, 'search'])->name('search');
+Route::post('/search', [TodoController::class, 'search'])->name('search');
 Route::get('/search_index', [TodoController::class, 'search_index'])->name('search_index');
 });
 

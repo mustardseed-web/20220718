@@ -14,11 +14,10 @@
     タスク検索
   </h1>
   {{-- //* 検索機能ここから *// --}}
-  <!--入力-->
-  <form action="{{ route('search') }}" method="GET">
-    <input type="text" name="searchWord">
-    <input type="submit" value="検索">
 
+  <form action="{{ route('search') }}" method="POST">
+    <!--入力欄-->
+    <input type="text" name="searchWord">
     <!--  カテゴリープルダウン -->
     <div class="form-group">
       <select class="form-control" id="category-id" name="category_id">
@@ -27,8 +26,9 @@
         @endforeach
       </select>
     </div>
+    {{-- 検索ボタン --}}
+    <input type="submit" value="検索">
   </form>
-
   <table>
     <tr>
       <th class="column_created_at">作成日</th>
@@ -47,21 +47,26 @@
       @foreach($todos as $todo)
       <tr>
         <td>{{ $post->created_at }}</td>
-        <td>{{ $post->title }}</td>
-        <td>{{ $post->category_name }}</td>
         <td>
-          {{-- 更新ボタン --}}
           <form action="{{ route('update', ['todoId' => $todo->id]) }}" method="post">
             @method('PUT')
             @csrf
+            <!--  タスク入力欄 -->
             <input type="text" name="title" size="50" value="{{$todo->title}}" class="#">
+            <!--  カテゴリープルダウン -->
+            <select class="form-control" id="category-id" name="category_id">
+              @foreach ($categories as $category)
+              <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+              @endforeach
+            </select>
+            <!--  更新ボタン -->
             <button type="submit" class="update_btn">更新</button>
           </form>
-          {{-- 削除ボタン --}}
         <td class="column_delete">
           <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">
             @method('DELETE')
             @csrf
+            <!--  削除ボタン -->
             <button type="submit" class="delete_btn">削除</button>
           </form>
         </td>

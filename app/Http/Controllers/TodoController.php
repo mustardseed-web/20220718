@@ -40,8 +40,10 @@ class TodoController extends Controller
       $todo = Todo::where('id', $todoId)->firstOrFail();
       $todo -> title = $request -> title();
       $todo -> save();
-      return redirect()
-      -> route('index', ['todoId' => $todo->id]);
+      // return redirect()
+      // -> route('index', ['todoId' => $todo->id]);
+      return back()->with(['todoId' => $todo->id]);
+
   }
 
   public function delete(Request $request)
@@ -49,7 +51,8 @@ class TodoController extends Controller
       $todoId = (int) $request->route('todoId');
       $todo = Todo::where('id', $todoId)->firstOrFail();
       $todo->delete();
-      return redirect()->route('index');
+      // return redirect()->route('index');
+      return back();
   }
 
   public function search(Request $request)

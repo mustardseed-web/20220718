@@ -62,10 +62,11 @@ class TodoController extends Controller
     if(!empty($searchWord)) {
       $query->where('title', 'LIKE', "%{$searchWord}%");
     }
-    //カテゴリが選択された場合、categoriesテーブルからcategory_idが一致する商品を$queryに代入
+    //カテゴリが選択された場合、categoriesテーブルからcategory_idが一致するtodoを$queryに代入
     if (!empty($category_id)) {
       $query->where('category_id', $category_id);
     }
+    // dd($query);
     $posts = $query->get();
     return view('search', compact('posts', 'searchWord', 'category_id', 'categories', 'todos'));
 }

@@ -39,31 +39,13 @@
       <th class="column_updated_at">更新</th>
       <th class="column_delete">削除</th>
     </tr>
-
-    <tr>
-      <th class="column_created_at">{{$post->created_at}}</th>
-      <th class="column_created_at">{{$post->title}}</th>
-      <th class="column_title">タグ</th>
-      <th class="column_updated_at">更新</th>
-      <th class="column_delete">削除</th>
-    </tr>
-
   </table>
-
-
-
-
-
-
-
-
 
   <!--検索結果テーブル 検索された時のみ表示する-->
   @if (!empty($posts))
   <div class="#">
     <table class="#">
       @foreach($posts as $post)
-      {{-- @foreach($todos as $todo) --}}
       <tr>
         <td>{{ $post->created_at }}</td>
         <td>
@@ -91,16 +73,13 @@
           </form>
         </td>
       </tr>
-      {{-- @endforeach --}}
       @endforeach
     </table>
     @else
     <p>見つかりませんでした。</p>
     @endif
   </div>
-
   <a href="{{ url('/') }}">戻る</a>
-
 </body>
 
 </html>

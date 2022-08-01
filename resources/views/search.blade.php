@@ -14,7 +14,7 @@
     タスク検索
   </h1>
   {{-- //* 検索機能ここから *// --}}
-  <form action="{{ route('search') }}" method="POST">
+  <form action="{{ route('search') }}" method="get">
     @csrf
     <!--入力欄-->
     <input type="text" name="searchWord">

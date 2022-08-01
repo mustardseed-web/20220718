@@ -58,7 +58,8 @@ class TodoController extends Controller
       $post = Todo::where('id', $postId)->firstOrFail();
       $post -> title = $request -> title();
       $post -> save();
-      return view('search', ['postId' => $post->id, 'categories' => $categories, 'post' => $post]);
+      // return view('search', ['postId' => $post->id, 'categories' => $categories, 'post' => $post]);
+      return back();
   }
 
   public function searchDelete(Request $request)
@@ -72,6 +73,7 @@ class TodoController extends Controller
   public function search(Request $request)
   { 
     $todos = Todo::all();
+    // $this->category = new Category();
     $categories = $this->category->get();
     $searchWord = $request->input('searchWord');
     $category_id = $request->input('category_id');

@@ -29,10 +29,10 @@ class TodoController extends Controller
       $user_id = Auth::id();
       $todo = new Todo;
       $todo->user_id = $user_id;
-      $category_id = $request->input('category_id');
+      $todo->category_id = $request->input('category_id');
       $todo->title = $request->title();
       $todo->save();
-      return redirect()->route('index', compact('user_id', 'category_id'));
+      return redirect()->route('index', compact('user_id'));
   }
 
   public function update(UpdateRequest $request)

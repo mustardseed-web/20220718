@@ -28,9 +28,9 @@ class TodoController extends Controller
   {   
       $user_id = Auth::id();
       $todo = new Todo;
-      $category_id = $request->category_id;
-      $todo->title = $request->title();
       $todo->user_id = $user_id;
+      $category_id = $request->input('category_id');
+      $todo->title = $request->title();
       $todo->save();
       return redirect()->route('index', compact('user_id', 'category_id'));
   }

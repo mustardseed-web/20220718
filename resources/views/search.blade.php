@@ -56,7 +56,7 @@
             <!--  更新内容入力欄 -->
             <input type="text" name="title" size="50" value="{{$post->title}}" class="#">
             <!--  カテゴリープルダウン -->
-            <select class="form-control" id="category-id" name="category_id">
+            <select class="form-control" id="category_id" name="category_id">
               @foreach ($categories as $category)
               <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
               @endforeach

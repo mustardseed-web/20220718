@@ -23,6 +23,8 @@
       <select class="form-control" id="category_id" name="category_id">
         @foreach ($categories as $category)
         <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+        {{-- <option value="{{ $category->id }}" @if($category->id==$todo->category->id) selected @endif>{{ --}}
+          $category->category_name }}</option>
         @endforeach
       </select>
     </div>
@@ -57,9 +59,12 @@
             <!--  カテゴリープルダウン -->
             <select class="form-control" id="category_id" name="category_id">
               @foreach ($categories as $category)
-              <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+              {{-- <option value="{{ $category->id }}">{{ $category->category_name }}</option> --}}
+              <option value="{{ $category->id }}" @if($category->id==$todo->category->id) selected @endif>{{
+                $category->category_name }}</option>
               @endforeach
             </select>
+            @endforeach
             <!--  更新ボタン -->
             <button type="submit" class="update_btn">更新</button>
           </form>
@@ -73,10 +78,9 @@
           </form>
         </td>
       </tr>
-      @endforeach
     </table>
-    @else
-    <p>見つかりませんでした。</p>
+    {{-- @else
+    <p>見つかりませんでした。</p> --}}
     @endif
   </div>
   <a href="{{ url('/') }}">戻る</a>

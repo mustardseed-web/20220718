@@ -44,6 +44,7 @@
     </div>
 
     <table>
+
       <tr>
         <th class="th_created_at">作成日</th>
         <th class="th_task_name">タスク名</th>
@@ -57,16 +58,18 @@
         @if (!empty($posts))
         @foreach($posts as $post)
 
-        <td>{{ $post->created_at }}</td>
+        <td class="column_created_at">{{ $post->created_at }}</td>
 
-        <td>
-          <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
-            @method('PUT')
-            @csrf
+        <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
+          @method('PUT')
+          @csrf
+          <td>
             <!--  更新内容入力欄 -->
-            <input type="text" name="title" size="50" value="{{$post->title}}" class="#">
+            <input type="text" name="title" size="30" value="{{$post->title}}" class="todo_task_name">
+          </td>
+          <td>
             <!--  カテゴリープルダウン -->
-            <select class="form-control" id="category_id" name="category_id">
+            <select class="column_category" id="category_id" name="category_id">
               @foreach ($categories as $category)
               {{-- $category->idはカテゴリーテーブルのid --}}
               {{-- $post->category->idは検索結果のレコードに紐づくカテゴリーid --}}
@@ -74,11 +77,14 @@
                 $category->category_name }}</option>
               @endforeach
             </select>
-            @endforeach
+          </td>
+          @endforeach
+          <td>
             <!--  更新ボタン -->
             <button type="submit" class="update_btn">更新</button>
-          </form>
-        </td>
+          </td>
+        </form>
+
 
 
         <td class="column_delete">
@@ -90,12 +96,10 @@
             <button type="submit" class="delete_btn">削除</button>
           </form>
         </td>
-
         @endif
-
       </tr>
     </table>
-    <a href="{{ url('/') }}">戻る</a>
+    <button type=“button” onclick="location.href='/'" class="return_btn">戻る</button>
   </div>
 
 </body>

@@ -70,6 +70,7 @@
           <td>
             <!--  カテゴリープルダウン -->
             <select class="column_category" id="category_id" name="category_id">
+              <option value="" label="hogehogehoge"></option>
               @foreach ($categories as $category)
               {{-- $category->idはカテゴリーテーブルのid --}}
               {{-- $post->category->idは検索結果のレコードに紐づくカテゴリーid --}}

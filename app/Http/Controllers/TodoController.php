@@ -40,6 +40,7 @@ class TodoController extends Controller
       $todoId = (int) $request->route('todoId');
       $todo = Todo::where('id', $todoId)->firstOrFail();
       $todo -> title = $request -> title();
+      $todo -> category_id = $request -> category_id;
       $todo -> save();
       return redirect()-> route('index', ['todoId' => $todo->id]);
 
@@ -58,6 +59,7 @@ class TodoController extends Controller
       $postId = (int) $request->route('postId');
       $post = Todo::where('id', $postId)->firstOrFail();
       $post -> title = $request -> title();
+      $post -> category_id = $request -> category_id;
       $post -> save();
       // return view('search', ['postId' => $post->id, 'categories' => $categories, 'post' => $post]);
       return back();

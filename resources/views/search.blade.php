@@ -15,7 +15,7 @@
       <h1 class="title">
         タスク検索
       </h1>
-      <form action="{{ route('logout') }}" method="post" class="logput_button_position">
+      <form action="{{ route('logout') }}" method="post" class="logout_button_position">
         @csrf
         <span>「{{ auth()->user()->name }}」でログイン中</span>
         <input class="lg_btn" type="submit" value="ログアウト">
@@ -66,6 +66,7 @@
           @csrf
           <td>
             <!--  更新内容入力欄 -->
+            <option value="" label="hogehogehoge"></option>
             <input type="text" name="title" size="30" value="{{$post->title}}" class="todo_task_name">
           </td>
           <td>
@@ -85,9 +86,6 @@
             <button type="submit" class="update_btn">更新</button>
           </td>
         </form>
-
-
-
         <td class="column_delete">
           {{-- 削除機能 --}}
           <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
@@ -97,6 +95,8 @@
             <button type="submit" class="delete_btn">削除</button>
           </form>
         </td>
+        @else
+        <span> 検索結果がありません</span>
         @endif
       </tr>
     </table>

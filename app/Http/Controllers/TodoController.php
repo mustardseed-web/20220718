@@ -61,7 +61,6 @@ class TodoController extends Controller
       $post -> title = $request -> title();
       $post -> category_id = $request -> category_id;
       $post -> save();
-      // return view('search', ['postId' => $post->id, 'categories' => $categories, 'post' => $post]);
       return back();
   }
 
@@ -76,7 +75,6 @@ class TodoController extends Controller
   public function search(Request $request)
   { 
     $todos = Todo::all();
-    // $this->category = new Category();
     $categories = $this->category->get();
     $searchWord = $request->input('searchWord');
     $category_id = $request->input('category_id');

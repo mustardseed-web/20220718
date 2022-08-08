@@ -15,13 +15,14 @@
       <h1 class="title">
         Todo List
       </h1>
-      <form action="{{ route('logout') }}" method="post" class="logput_button_position">
+      <form action="{{ route('logout') }}" method="post" class="logout_button_position">
         @csrf
         <span>「{{ auth()->user()->name }}」でログイン中</span>
         <input class="lg_btn" type="submit" value="ログアウト">
       </form>
     </div>
-    <button class="atag_search_button" type="button" onclick="location.href='{{ route('search_index') }}' ">タスク検索</button>
+    <button class="atag_search_button" type="button"
+      onclick="location.href='{{ route('search_index') }}' ">タスク検索</button>
 
     <div class="sub_container">
       <form action="{{ route('create') }}" method="post">
@@ -79,7 +80,6 @@
             <button type="submit" class="update_btn">更新</button>
           </td>
         </form>
-        {{-- </td> --}}
         {{-- 削除ボタン --}}
         <td class="column_delete">
           <form action="{{ route('delete', ['todoId' => $todo->id]) }}" method="post">

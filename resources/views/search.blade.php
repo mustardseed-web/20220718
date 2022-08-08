@@ -27,7 +27,7 @@
       <form action="{{ route('search') }}" method="get" class="display_flex">
         @csrf
         <!--入力欄-->
-        <input type="text" name="searchWord" size="100" class="search_textbox">
+        <input type="text" name="searchWord" class="search_textbox">
         <!--  カテゴリープルダウン -->
         <div class="form-group">
           <select class="search_category" id="category_id" name="category_id">
@@ -45,7 +45,6 @@
     </div>
 
     <table>
-
       <tr>
         <th class="th_created_at">作成日</th>
         <th class="th_task_name">タスク名</th>
@@ -55,48 +54,49 @@
       </tr>
 
       <!--検索結果テーブル 検索された時のみ表示する-->
-      <tr>
-        @if (!empty($posts))
-        {{-- @if (!$posts->isEmpty()) --}}
-        @foreach($posts as $post)
-        <td class="column_created_at">{{ $post->created_at }}</td>
-        <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
-          @method('PUT')
-          @csrf
-          <td>
-            <!--  更新内容入力欄 -->
-            <input type="text" name="title" size="30" value="{{$post->title}}" class="todo_task_name">
-          </td>
-          <td>
-            <!--  カテゴリープルダウン -->
-            <select class="column_category" id="category_id" name="category_id">
-              @foreach ($categories as $category)
-              {{-- $category->idはカテゴリーテーブルのid --}}
-              {{-- $post->category->idは検索結果のレコードに紐づくカテゴリーid --}}
-              <option value="{{ $category->id }}" @if($category->id==$post->category->id) selected @endif>{{
-                $category->category_name }}</option>
-              @endforeach
-            </select>
-          </td>
-          @endforeach
-          <td>
-            <!--  更新ボタン -->
-            <button type="submit" class="update_btn">更新</button>
-          </td>
-        </form>
-        <td class="column_delete">
-          {{-- 削除機能 --}}
-          <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
-            @method('DELETE')
+      <div class="block">
+        <tr>
+          @if (!empty($posts))
+          @foreach($posts as $post)
+          <td class="column_created_at">{{ $post->created_at }}</td>
+          <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
+            @method('PUT')
             @csrf
-            <!--  削除ボタン -->
-            <button type="submit" class="delete_btn">削除</button>
+            <td>
+              <!--  更新内容入力欄 -->
+              <input type="text" name="title" size="30" value="{{$post->title}}" class="todo_task_name">
+            </td>
+            <td>
+              <!--  カテゴリープルダウン -->
+              <select class="column_category" id="category_id" name="category_id">
+                @foreach ($categories as $category)
+                {{-- $category->idはカテゴリーテーブルのid --}}
+                {{-- $post->category->idは検索結果のレコードに紐づくカテゴリーid --}}
+                <option value="{{ $category->id }}" @if($category->id==$post->category->id) selected @endif>{{
+                  $category->category_name }}</option>
+                @endforeach
+              </select>
+            </td>
+            @endforeach
+            <td>
+              <!--  更新ボタン -->
+              <button type="submit" class="update_btn">更新</button>
+            </td>
           </form>
-        </td>
-        @else
-        <p>見つかりませんでした。</p>
-        @endif
-      </tr>
+          <td class="column_delete">
+            {{-- 削除機能 --}}
+            <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
+              @method('DELETE')
+              @csrf
+              <!--  削除ボタン -->
+              <button type="submit" class="delete_btn">削除</button>
+            </form>
+          </td>
+          @endif
+        </tr>
+      </div>
+
+
     </table>
     <button type=“button” onclick="location.href='/'" class="return_btn">戻る</button>
   </div>

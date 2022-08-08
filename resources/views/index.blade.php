@@ -31,7 +31,7 @@
         <p>{{$message}}</p>
         @enderror
         {{-- todo入力欄 --}}
-        <input type="text" name="title" size="100" class="text">
+        <input type="text" name="title" class="text">
         <!--  カテゴリープルダウン -->
         <select class="add_category" id="category-id" name="category_id">
           @foreach ($categories as $category)

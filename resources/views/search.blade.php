@@ -57,16 +57,14 @@
       <!--検索結果テーブル 検索された時のみ表示する-->
       <tr>
         @if (!empty($posts))
+        {{-- @if (!$posts->isEmpty()) --}}
         @foreach($posts as $post)
-
         <td class="column_created_at">{{ $post->created_at }}</td>
-
         <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
           @method('PUT')
           @csrf
           <td>
             <!--  更新内容入力欄 -->
-            <option value="" label="hogehogehoge"></option>
             <input type="text" name="title" size="30" value="{{$post->title}}" class="todo_task_name">
           </td>
           <td>
@@ -96,7 +94,7 @@
           </form>
         </td>
         @else
-        <span> 検索結果がありません</span>
+        <p>見つかりませんでした。</p>
         @endif
       </tr>
     </table>

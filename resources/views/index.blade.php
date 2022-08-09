@@ -17,8 +17,10 @@
       </h1>
       <form action="{{ route('logout') }}" method="post" class="logout_button_position">
         @csrf
-        <span>「{{ auth()->user()->name }}」でログイン中</span>
-        <input class="lg_btn" type="submit" value="ログアウト">
+        <div class="display_flex">
+          <p>「{{ auth()->user()->name }}」でログイン中</p>
+          <input class="lg_btn" type="submit" value="ログアウト">
+        </div>
       </form>
     </div>
     <button class="atag_search_button" type="button"

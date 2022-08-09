@@ -39,12 +39,19 @@
     margin-top: 2%;
 }
 
+/* .user_name {
+    width: 200%;
+} */
+
 .lg_btn {
     background-color: white;
     color: red;
     border: 2px solid red;
-    padding: 9px;
+    /* padding: 1px; */
     border-radius: 5px;
+    margin-top: 10px;
+    height: 40px;
+    margin-left: 5px;
 }
 
 .lg_btn:hover {

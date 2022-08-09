@@ -17,8 +17,10 @@
       </h1>
       <form action="{{ route('logout') }}" method="post" class="logout_button_position">
         @csrf
-        <span>「{{ auth()->user()->name }}」でログイン中</span>
-        <input class="lg_btn" type="submit" value="ログアウト">
+        <div class="display_flex">
+          <p class="user_name">「{{ auth()->user()->name }}」でログイン中</p>
+          <input class="lg_btn" type="submit" value="ログアウト">
+        </div>
       </form>
     </div>
 
@@ -54,10 +56,11 @@
       </tr>
 
       <!--検索結果テーブル 検索された時のみ表示する-->
-      <div class="block">
-        <tr>
+      {{-- <div class="block"> --}}
+        {{-- <tr> --}}
           @if (!empty($posts))
           @foreach($posts as $post)
+        <tr>
           <td class="column_created_at">{{ $post->created_at }}</td>
           <form action="{{ route('searchUpdate', ['postId' => $post->id]) }}" method="post">
             @method('PUT')
@@ -77,23 +80,25 @@
                 @endforeach
               </select>
             </td>
-            @endforeach
-            <td>
-              <!--  更新ボタン -->
-              <button type="submit" class="update_btn">更新</button>
-            </td>
+            {{--
+        </tr> --}}
+        {{-- @endforeach --}}
+        <td>
+          <!--  更新ボタン -->
+          <button type="submit" class="update_btn">更新</button>
+        </td>
+        </form>
+        <td class="column_delete">
+          {{-- 削除機能 --}}
+          <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <!--  削除ボタン -->
+            <button type="submit" class="delete_btn">削除</button>
           </form>
-          <td class="column_delete">
-            {{-- 削除機能 --}}
-            <form action="{{ route('searchDelete', ['postId' => $post->id]) }}" method="post">
-              @method('DELETE')
-              @csrf
-              <!--  削除ボタン -->
-              <button type="submit" class="delete_btn">削除</button>
-            </form>
-          </td>
-          @endif
-        </tr>
+        </td>
+        @endforeach
+        @endif
       </div>
 
 
